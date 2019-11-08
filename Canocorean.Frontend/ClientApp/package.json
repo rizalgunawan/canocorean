@@ -1,0 +1,42 @@
+{
+  "name": "canocorean",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "lint": "ng lint",
+    "prettier": "prettier --write \"./src/**/!(*.d.ts|*.png|*.svg|*.ico|*.html)\"",
+    "dtsgen": "dtsgen -n Backend -o ./src/backend.generated.d.ts --url http://localhost:5000/swagger/v1/swagger.json",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "bundle-report": "ng build --configuration production --stats-json && webpack-bundle-analyzer wwwroot/dist/stats.json"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "8.2.13",
+    "@angular/common": "8.2.13",
+    "@angular/compiler": "8.2.13",
+    "@angular/core": "8.2.13",
+    "@angular/forms": "8.2.13",
+    "@angular/platform-browser": "8.2.13",
+    "@angular/platform-browser-dynamic": "8.2.13",
+    "@angular/router": "8.2.13",
+    "core-js": "2.6.5",
+    "rxjs": "6.5.3",
+    "zone.js": "0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "0.803.18",
+    "@angular/cli": "8.3.18",
+    "@angular/compiler-cli": "8.2.13",
+    "@angular/language-service": "8.2.13",
+    "@types/node": "12.12.6",
+    "codelyzer": "5.2.0",
+    "dtsgenerator": "2.3.1",
+    "prettier": "1.18.2",
+    "ts-node": "8.4.1",
+    "tslint": "5.20.1",
+    "typescript": "3.5.3",
+    "webpack-bundle-analyzer": "3.6.0"
+  }
+}
