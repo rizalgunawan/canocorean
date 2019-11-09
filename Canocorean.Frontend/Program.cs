@@ -25,9 +25,9 @@ namespace Canocorean.Frontend
 
                     using (var context = services.GetRequiredService<CanocoreanDbContext>())
                     {
-                        logger.LogInformation("Database creation started");
-                        context.Database.EnsureCreated();
-                        logger.LogInformation("Database creation completed");
+                        logger.LogInformation("Database migration started");
+                        context.Database.Migrate();
+                        logger.LogInformation("Database migration completed");
                     }
                 }
 

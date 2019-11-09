@@ -38,8 +38,7 @@ namespace Canocorean.Frontend.Bootstrap
 
         public static IServiceCollection ConfigureInfrastructure(this IServiceCollection services)
         {
-            var dbContextOptions = new DbContextOptionsBuilder<CanocoreanDbContext>().UseInMemoryDatabase(databaseName: "Canocorean").Options;
-            services.AddTransient(isp => new CanocoreanDbContext(dbContextOptions));
+            services.AddTransient(isp => new CanocoreanDbContext());
             return services;
         }
         public static IServiceCollection AddFrontEndAPI(this IServiceCollection services)
