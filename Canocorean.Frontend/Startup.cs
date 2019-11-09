@@ -55,7 +55,7 @@ namespace Canocorean.Frontend
             }).UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";
-                if (env.IsDevelopment())
+                if (Configuration["RUN_DEV_SERVER"] == "true")
                 {
                     spa.UseAngularCliServer(npmScript: "start");
                 }

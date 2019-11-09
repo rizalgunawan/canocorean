@@ -8,6 +8,7 @@
     "dtsgen": "dtsgen -n Backend -o ./src/backend.generated.d.ts --url http://localhost:5000/swagger/v1/swagger.json",
     "start": "ng serve",
     "build": "ng build",
+    "build:ci": "ng lint && ng build --configuration production --progress false",
     "test": "ng test",
     "bundle-report": "ng build --configuration production --stats-json && webpack-bundle-analyzer wwwroot/dist/stats.json"
   },

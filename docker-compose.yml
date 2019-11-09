@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  canocorean.frontend:
+    image: ${DOCKER_REGISTRY-}canocoreanfrontend
+    build:
+      context: .
+      dockerfile: Canocorean.Frontend/Dockerfile
