@@ -44,7 +44,6 @@
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
   </Target>
   <Target Name="BuildFrontEnd" AfterTargets="Build">
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ci" />
   </Target>
 </Project>

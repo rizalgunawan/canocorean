@@ -4,10 +4,9 @@ namespace Canocorean.Infrastructure.EntityFramework
 {
     public class CanocoreanDbContext : DbContext
     {
-        public CanocoreanDbContext()
-        {
+        private const string DefaultConnectionString =
+            "Host=localhost;Port=5432;Database=Canocorean;Username=postgres;Password=example";
 
-        }
         public CanocoreanDbContext(DbContextOptions<CanocoreanDbContext> options) : base(options)
         {
 
@@ -18,9 +17,10 @@ namespace Canocorean.Infrastructure.EntityFramework
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            // Configuration for design time migrations
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Host=postgres;Port=5432;Database=Canocorean;Username=postgres;Password=example");
+                optionsBuilder.UseNpgsql(DefaultConnectionString);
             }
         }
     }

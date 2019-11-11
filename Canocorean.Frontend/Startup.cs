@@ -19,7 +19,7 @@ namespace Canocorean.Frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .ConfigureInfrastructure()
+                .ConfigureInfrastructure(Configuration)
                 .AddFrontEndAPI()
                 .ConfigureSwagger()
                 .ConfigureValidation()

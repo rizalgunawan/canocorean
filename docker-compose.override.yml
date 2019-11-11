@@ -6,6 +6,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=44330
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=Canocorean;Username=postgres;Password=example
     ports:
       - "52057:80"
       - "44330:443"

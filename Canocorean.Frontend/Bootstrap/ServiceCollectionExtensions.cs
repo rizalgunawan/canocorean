@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -36,9 +37,12 @@ namespace Canocorean.Frontend.Bootstrap
             };
         };
 
-        public static IServiceCollection ConfigureInfrastructure(this IServiceCollection services)
+        public static IServiceCollection ConfigureInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient(isp => new CanocoreanDbContext());
+            var dbOptions = new DbContextOptionsBuilder<CanocoreanDbContext>()
+                .UseNpgsql(configuration.GetConnectionString("DefaultConnection")).Options;
+
+            services.AddTransient(isp => new CanocoreanDbContext(dbOptions));
             return services;
         }
         public static IServiceCollection AddFrontEndAPI(this IServiceCollection services)
@@ -72,14 +76,14 @@ namespace Canocorean.Frontend.Bootstrap
         }
         public static IServiceCollection ConfigureValidation(this IServiceCollection services)
         {
-                GetAssembliesToScanLocalDependencies()
-                .SelectMany(a => a.GetTypes())
-                .Where(t => !t.IsAbstract && typeof(IValidator).IsAssignableFrom(t))
-                .ToList()
-                .ForEach(vtype =>
-                {
-                    services.AddTransient(vtype).As(vtype.BaseType);
-                });
+            GetAssembliesToScanLocalDependencies()
+            .SelectMany(a => a.GetTypes())
+            .Where(t => !t.IsAbstract && typeof(IValidator).IsAssignableFrom(t))
+            .ToList()
+            .ForEach(vtype =>
+            {
+                services.AddTransient(vtype).As(vtype.BaseType);
+            });
             return services;
         }
         public static IServiceCollection ConfigureAutoMapper(this IServiceCollection services)
