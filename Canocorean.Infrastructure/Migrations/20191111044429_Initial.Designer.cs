@@ -2,15 +2,17 @@
 using Canocorean.Infrastructure.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Canocorean.Infrastructure.Migrations
 {
     [DbContext(typeof(CanocoreanDbContext))]
-    partial class CanocoreanDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191111044429_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
